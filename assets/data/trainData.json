@@ -1,0 +1,31 @@
+[{
+        "name": "Trenton Express",
+        "dest": "Trenton, NJ",
+        "startTime": "00:00:00",
+        "freq": "30"
+    },
+    {
+        "name": "Dover Express",
+        "dest": "Boston, MA",
+        "startTime": "04:0:00",
+        "freq": "3600"
+    },
+    {
+        "name": "Logan Express",
+        "dest": "Boston, MA",
+        "startTime": "00:00:00",
+        "freq": "480"
+    },
+    {
+        "name": "Maine Express",
+        "dest": "Portland, ME",
+        "startTime": "00:00:00",
+        "freq": "3000"
+    },
+    {
+        "name": "New England Express",
+        "dest": "New York City, NY",
+        "startTime": "00:00:00",
+        "freq": "3000"
+    }
+]

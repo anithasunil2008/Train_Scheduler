@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Train Scheduler
+    </title>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- LINK TO BOOTSTRAP GOES HERE -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- LINK TO CSS GOES HERE -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <link rel="shortcut icon" type="image/png" href="assets/images/train.png" />
+
+    <!-- LINK TO FIREBASE GOES HERE -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+    <!-- LINK TO MOMENT GOES HERE -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+</head>
+
+<body background="assets/images/bg.jpg">
+    <header>
+        <img id="train" width="500" height="80" src="assets/images/train.gif">
+        <span>Train Scheduler</span>
+        <span id="demo"></span>
+    </header>
+
+    <br>
+    <br>
+  
+    <div id="currentTime">
+        <ul class="list-group">
+            <li id="heading" class="list-group-item active">Current Time</li>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Train Name</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Frequency</th>
+                        <th scope="col">Next Arrival</th>
+                        <th scope="col">Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </ul>
+    </div>
+    <br>
+    <br>
+
+    <div id="addTrain">
+        <ul class="list-group">
+            <li id="heading" class="list-group-item active">Add Train</li>
+            <span class="border border-primary">
+                <form>
+                    <div class="form-group">
+                        <label for="trainName">Train Name</label>
+                        <input type="text" class="form-control" id="trainName" placeholder="Enter Train Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="destination">Destination</label>
+                        <input type="text" class="form-control" id="destination" placeholder="Destination">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="time">First Train Time(HH:MM - military time)</label>
+                        <input type="text" class="form-control" id="time" placeholder="Time">
+                    </div>
+
+                    <div class="form-group">
+                            <label for="fre">Frequency</label>
+                            <input type="text" class="form-control" id="fre" placeholder="min">
+                        </div>
+                  
+                    <button type="submit" id="button" class="btn btn-primary">Submit</button>
+    
+                </form>
+            </span>
+        </ul>
+        </span>
+    </div>
+
+  
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+</body>
+
+</html>
