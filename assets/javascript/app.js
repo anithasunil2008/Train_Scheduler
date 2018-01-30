@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    document.getElementById("demo").innerHTML = Date();
+    document.getElementById("demo").innerHTML = "CURRENT  TIME: " + " " + moment(currentTime).format("hh:mm");
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyACVVDckwQx3xLNWi7J3NkcwSsw-ikiy1Q",
@@ -37,7 +37,16 @@ $(document).ready(function() {
         $('.form-control').val('');
     });
 
+    var tFrequency;
+    var firstTimeConverted;
+    var currentTime;
+    var diffTime;
+    var tRemainder;
+    var tMinutes;
+    var nextTrain;
+
     // This function helps to update the page in real-time 
+
     database.ref().on('child_added', function(snapshot) {
         console.log(snapshot.val());
         console.log(snapshot.val().trainName);
@@ -46,33 +55,34 @@ $(document).ready(function() {
         console.log(snapshot.val().trainFrequency);
         console.log("CURRENT TIME: " + moment().format('HH:mm'));
 
-        var tFrequency = snapshot.val().trainFrequency;
+        tFrequency = snapshot.val().trainFrequency;
 
-        var firstTimeConverted = moment(tFrequency, "hh:mm").subtract(1, "years");
+        firstTimeConverted = moment(tFrequency, "hh:mm").subtract(1, "hours");
         console.log(firstTimeConverted);
 
         // Current Time
-        var currentTime = moment();
+        currentTime = moment();
         console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
         // Difference between the times
-        var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+        diffTime = moment().diff(moment(firstTimeConverted), "minutes");
         console.log("DIFFERENCE IN TIME: " + diffTime);
 
         // Time apart
-        var tRemainder = diffTime % tFrequency;
+        tRemainder = diffTime % tFrequency;
         console.log(tRemainder);
 
         // Minute Until Train
-        var tMinutes = tFrequency - tRemainder;
+        tMinutes = tFrequency - tRemainder;
         console.log("MINUTES Away: " + tMinutes);
 
         // Next Train
-        var nextTrain = moment(moment().add(tMinutes, "minutes")).format('hh:mm');
+        nextTrain = moment(moment().add(tMinutes, "minutes")).format('hh:mm');
         console.log("Next Arrival: " + moment(nextTrain).format("hh:mm"));
 
         $('tbody').append('<tr><td>' + snapshot.val().trainName + '</td><td>' + snapshot.val().trainDestination + '</td><td>' +
-            snapshot.val().trainFrequency + '</td><td>' + nextTrain + '</td><td>' + tMinutes + '</td></tr>');
+            snapshot.val().trainFrequency + '</td><td id="trainUpdate">' + nextTrain + '</td><td id="minUpdate">' + tMinutes + '</td></tr>');
 
+        setInterval(call, 5000);
     });
 });
