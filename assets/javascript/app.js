@@ -57,12 +57,12 @@ $(document).ready(function() {
 
         tFrequency = snapshot.val().trainFrequency;
 
-        firstTimeConverted = moment(tFrequency, "hh:mm").subtract(1, "hours");
+        firstTimeConverted = moment(tFrequency, "hh:mm").subtract(1, "years");
         console.log(firstTimeConverted);
 
         // Current Time
-        currentTime = moment();
-        console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+        currentTime = moment().format("HH:mm");
+        console.log("CURRENT TIME: " + currentTime);
 
         // Difference between the times
         diffTime = moment().diff(moment(firstTimeConverted), "minutes");
@@ -77,12 +77,10 @@ $(document).ready(function() {
         console.log("MINUTES Away: " + tMinutes);
 
         // Next Train
-        nextTrain = moment(moment().add(tMinutes, "minutes")).format('hh:mm');
+        nextTrain = moment().add(tMinutes, "minutes").format('hh:mm');
         console.log("Next Arrival: " + moment(nextTrain).format("hh:mm"));
 
         $('tbody').append('<tr><td>' + snapshot.val().trainName + '</td><td>' + snapshot.val().trainDestination + '</td><td>' +
             snapshot.val().trainFrequency + '</td><td id="trainUpdate">' + nextTrain + '</td><td id="minUpdate">' + tMinutes + '</td></tr>');
-
-        setInterval(call, 5000);
     });
 });
