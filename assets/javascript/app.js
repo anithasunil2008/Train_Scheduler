@@ -86,6 +86,6 @@ $(document).ready(function() {
 
 
         $('tbody').append('<tr><td>' + snapshot.val().trainName + '</td><td>' + snapshot.val().trainDestination + '</td><td>' +
-            snapshot.val().trainFrequency + '</td><td>' + moment(nextTrain).format("hh:mm") + '</td><td>' + tMinutes + '</td></tr>');
+            snapshot.val().trainFrequency + '</td><td>' + moment(nextTrain).format("hh:mm a") + '</td><td>' + tMinutes + '</td></tr>');
     });
 });
